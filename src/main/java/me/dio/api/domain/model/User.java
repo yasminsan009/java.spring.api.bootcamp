@@ -20,8 +20,7 @@ public class User {
     
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private UserNumber userNumber;  
+    private String number;
 
     private String paymentMethod;
 
@@ -32,16 +31,19 @@ public class User {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Feature> features;
+    
 
-
+    
+    
+    
     public Long getId() {
         return id;
     }
-
+    
     public void setId(Long id) {
         this.id = id;
     }
-
+    
     public String getName() {
         return name;
     }
@@ -49,13 +51,13 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-
-    public UserNumber getUserNumber() {
-        return userNumber;
+    
+    public String getNumber() {
+        return number;
     }
 
-    public void setUserNumber(UserNumber userNumber) {
-        this.userNumber = userNumber;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getPaymentMethod() {

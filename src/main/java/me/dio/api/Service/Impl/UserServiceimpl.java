@@ -34,8 +34,8 @@ public class UserServiceimpl implements UserService {
     @Override
     public User create(User userToCreate) {
 
-        if (userRepository.existsByUserNumber(userToCreate.getUserNumber())) {
-            throw new NoSuchElementException("User with number " + userToCreate.getUserNumber() + " already exists!");
+        if (userRepository.existsByUserNumber(userToCreate.getNumber())) {
+            throw new NoSuchElementException("User with number " + userToCreate.getNumber() + " already exists!");
         }
         return userRepository.save(userToCreate);
     }
@@ -52,7 +52,7 @@ public class UserServiceimpl implements UserService {
 
         dbUser.setName(userToUpdate.getName());
         dbUser.setConsultation(userToUpdate.getConsultation());
-        dbUser.setUserNumber(userToUpdate.getUserNumber());
+        dbUser.setNumber(userToUpdate.getNumber());
         dbUser.setPaymentMethod(userToUpdate.getPaymentMethod());
         dbUser.setValue(userToUpdate.getValue());
         dbUser.setFeatures(userToUpdate.getFeatures());
