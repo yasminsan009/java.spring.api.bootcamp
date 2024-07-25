@@ -1,6 +1,7 @@
 package me.dio.api.Controller;
 import java.net.URI;
 
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,8 +26,8 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id){
-        var user = userService.FindById(id);
+    public ResponseEntity<User> findById(@PathVariable Long id) throws NotFoundException{
+        var user = userService.findById(id);
         return ResponseEntity.ok(user);
         
     }
