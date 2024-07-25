@@ -16,9 +16,19 @@ public class UserServiceimpl implements UserService {
     private static final Long UNCHANGEABLE_USER_ID = 1L;
 
     private UserRepository userRepository;
-
     private UserServiceimpl(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+    
+    @Override
+    public List<User> findAll() {
+        return this.userRepository.findAll();
+    }
+    
+    @Override
+    public User findById(Long Id) {
+        return userRepository.findById(Id)
+                .orElseThrow(() -> new IllegalArgumentException("User not found with Id: " + Id));
     }
 
     @Override
@@ -30,16 +40,7 @@ public class UserServiceimpl implements UserService {
         return userRepository.save(userToCreate);
     }
 
-    @Override
-    public User findById(Long Id) {
-        return userRepository.findById(Id)
-                .orElseThrow(() -> new IllegalArgumentException("User not found with Id: " + Id));
-    }
-
-    @Override
-    public List<User> findAll() {
-        return this.userRepository.findAll();
-    }
+    
 
     @Override
     public User update(Long id, User userToUpdate) {
