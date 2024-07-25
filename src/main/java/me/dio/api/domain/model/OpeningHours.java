@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity(name = "tb_OpeningHours")
+@Entity(name = "TB_OpeningHours")
 public class OpeningHours {
 
     @Id
@@ -14,7 +14,7 @@ public class OpeningHours {
     
     private String weekDay;
     private String weeknd;
-
+    
     public Long getId() {
         return id;
     }
@@ -33,4 +33,7 @@ public class OpeningHours {
     public void setWeeknd(String weeknd) {
         this.weeknd = weeknd;
     }
+
+
+    
 }

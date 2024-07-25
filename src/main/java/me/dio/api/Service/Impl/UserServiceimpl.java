@@ -1,5 +1,6 @@
 package me.dio.api.Service.Impl;
 
+
 import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
@@ -20,17 +21,18 @@ public class UserServiceimpl implements UserService{
     }
 
     @Override
-    public User FindById(Long Id) {
-        return userRepository.findById(Id).orElseThrow(NoSuchElementException::new);
+    public User create(User userToCreate) {
+
+        if(userRepository.existsByUserNumber(userToCreate.getUserNumber())){
+            throw new NoSuchElementException("User with number " + userToCreate.getUserNumber() + " already exists!");
+        }
+        return userRepository.save(userToCreate);
     }
 
     @Override
-    public User create(User userToCreate) {
-
-        if(userToCreate.getId() != null && userRepository.existsById(userToCreate.getId())){
-            throw new IllegalArgumentException("This user ID already exists.");
-        }
-        return userRepository.save(userToCreate);
+    public User FindById(Long Id) {
+        return userRepository.findById(Id)
+        .orElseThrow(() -> new IllegalArgumentException("User not found with Id: " + Id));
     }
 
     

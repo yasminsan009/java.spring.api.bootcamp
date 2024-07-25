@@ -5,8 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity(name = "tb_ContactInformation")
-public class ContactInformation {
+@Entity(name = "tb_clinic")
+public class Clinic extends OpeningHours{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +15,7 @@ public class ContactInformation {
     private String number;
     private String email;
     private String Adress;
+
 
     public Long getId() {
         return id;
